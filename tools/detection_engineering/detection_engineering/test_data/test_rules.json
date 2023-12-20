@@ -1,0 +1,50 @@
+[
+    {
+        "ruleId": "ru_a2d1705b-6c24-49dc-ad11-86ec86696fa4",
+        "versionId": "ru_a2d1705b-6c24-49dc-ad11-86ec86696fa4@v_1701234025_767903000",
+        "ruleName": "okta_new_api_token_created",
+        "metadata": {
+            "mitre_attack_url": "https://attack.mitre.org/techniques/T1078/",
+            "mitre_attack_version": "v13.1",
+            "severity": "Medium",
+            "mitre_attack_technique": "Valid Accounts",
+            "reference": "https://developer.okta.com/docs/guides/tokens/",
+            "mitre_attack_tactic": "Defense Evasion, Persistence, Privilege Escalation, Initial Access",
+            "type": "Alert",
+            "priority": "Medium",
+            "author": "Google Cloud Security",
+            "data_source": "Okta",
+            "description": "Detects when a new API token is created."
+        },
+        "ruleText": "rule okta_new_api_token_created {\n\n  meta:\n    author = \"Google Cloud Security\"\n    description = \"Detects when a new API token is created.\"\n    reference = \"https://developer.okta.com/docs/guides/tokens/\"\n    mitre_attack_tactic = \"Defense Evasion, Persistence, Privilege Escalation, Initial Access\"\n    mitre_attack_technique = \"Valid Accounts\"\n    mitre_attack_url = \"https://attack.mitre.org/techniques/T1078/\"\n    mitre_attack_version = \"v13.1\"\n    type = \"Alert\"\n    data_source = \"Okta\"\n    severity = \"Medium\"\n    priority = \"Medium\"\n\n  events:\n    $token.metadata.product_name = \"Okta\"\n    $token.metadata.vendor_name = \"Okta\"\n    $token.metadata.product_event_type = \"system.api_token.create\"\n    $token.security_result.summary = \"Create API token\"\n    $token.security_result.action = \"ALLOW\"\n    $token.principal.user.userid = $userid\n\n  match:\n    $userid over 1h\n\n  outcome:\n    $risk_score = max(35)\n    $mitre_attack_tactic = \"Defense Evasion, Persistence, Privilege Escalation, Initial Access\"\n    $mitre_attack_technique = \"Valid Accounts\"\n    $target_user_agent = array_distinct($token.network.http.user_agent)\n    $principal_ip = array_distinct($token.principal.ip)\n    $principal_ip_country = array_distinct($token.principal.ip_geo_artifact.location.country_or_region)\n    $principal_ip_state = array_distinct($token.principal.ip_geo_artifact.location.state)\n    $principal_ip_city = array_distinct($token.principal.location.city)\n    $principal_user_email_addresses = array_distinct ($token.principal.user.email_addresses)\n    $security_result_summary = array_distinct($token.security_result.summary)\n\n  condition:\n    $token\n}\n",
+        "alertingEnabled": true,
+        "liveRuleEnabled": true,
+        "versionCreateTime": "2023-11-29T05:00:25.767903Z",
+        "compilationState": "SUCCEEDED",
+        "ruleType": "SINGLE_EVENT"
+    },
+    {
+        "ruleId": "ru_bcf153b7-ffd3-47c5-981f-53630e3ff7df",
+        "versionId": "ru_bcf153b7-ffd3-47c5-981f-53630e3ff7df@v_1698857956_132015000",
+        "ruleName": "okta_suspicious_use_of_a_session_cookie",
+        "metadata": {
+            "mitre_attack_url": "https://attack.mitre.org/techniques/T1539/",
+            "mitre_attack_technique": "Steal Web Session Cookie",
+            "data_source": "Okta",
+            "priority": "Medium",
+            "mitre_attack_version": "v13.1",
+            "type": "Alert",
+            "author": "Google Cloud Security",
+            "reference": "https://sec.okta.com/sessioncookietheft",
+            "severity": "Medium",
+            "description": "Detects when an adversary attempts to reuse a stolen web session cookie in a different device that has a different OS, IP, Browser or User Agent.",
+            "mitre_attack_tactic": "Credential Access"
+        },
+        "ruleText": "rule okta_suspicious_use_of_a_session_cookie {\n\n  meta:\n    author = \"Google Cloud Security\"\n    description = \"Detects when an adversary attempts to reuse a stolen web session cookie in a different device that has a different OS, IP, Browser or User Agent.\"\n    reference = \"https://sec.okta.com/sessioncookietheft\"\n    mitre_attack_tactic = \"Credential Access\"\n    mitre_attack_technique = \"Steal Web Session Cookie\"\n    mitre_attack_url = \"https://attack.mitre.org/techniques/T1539/\"\n    mitre_attack_version = \"v13.1\"\n    type = \"Alert\"\n    data_source = \"Okta\"\n    severity = \"Medium\"\n    priority = \"Medium\"\n\n  events:\n    $login.metadata.product_name = \"Okta\"\n    $login.metadata.vendor_name = \"Okta\"\n    $login.metadata.event_type = \"USER_UNCATEGORIZED\"\n    $login.metadata.product_event_type = \"policy.evaluate_sign_on\"\n    (\n        $login.security_result.action = \"ALLOW\" or\n        $login.security_result.action = \"ALLOW_WITH_MODIFICATION\" or\n        $login.security_result.action = \"CHALLENGE\"\n    )\n    $login.principal.user.userid = $userid\n    $login.security_result.detection_fields[\"dtHash\"] = $dtHash\n\n  match:\n    $userid, $dtHash over 1h\n\n  outcome:\n    $risk_score = max(35)\n    $mitre_attack_tactic = \"Credential Access\"\n    $mitre_attack_technique = \"Steal Web Session Cookie\"\n    $target_os = array_distinct($login.network.http.parsed_user_agent.os)\n    $dc_target_os = count_distinct($login.network.http.parsed_user_agent.os)\n    $target_browser = array_distinct($login.network.http.parsed_user_agent.browser)\n    $dc_target_browser = count_distinct($login.network.http.parsed_user_agent.browser)\n    $target_user_agent = array_distinct($login.network.http.user_agent)\n    $principal_ip = array_distinct($login.principal.ip)\n    $dc_principal_ip = count_distinct($login.principal.ip)\n    $principal_ip_country = array_distinct($login.principal.ip_geo_artifact.location.country_or_region)\n    $principal_ip_state = array_distinct($login.principal.ip_geo_artifact.location.state)\n    $principal_ip_city = array_distinct($login.principal.location.city)\n    $dc_principal_ip_city = count_distinct($login.principal.location.city)\n    $security_result_summary = array_distinct($login.security_result.summary)\n    $principal_user_managers_email_addresses = array_distinct($login.principal.user.managers.email_addresses)\n    $principal_user_userid = array_distinct($login.principal.user.userid)\n\n  condition:\n    $login and $dc_principal_ip > 1 and ($dc_target_browser > 1 or $dc_target_os > 1)\n}\n",
+        "alertingEnabled": true,
+        "liveRuleEnabled": true,
+        "versionCreateTime": "2023-11-01T16:59:16.132015Z",
+        "compilationState": "SUCCEEDED",
+        "ruleType": "MULTI_EVENT"
+    }
+]

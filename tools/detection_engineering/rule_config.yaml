@@ -1,0 +1,10 @@
+# Example rule config entry
+okta_new_api_token_created:
+  alerting_enabled: false
+  archived: false
+  archived_time: null
+  live_rule_enabled: true
+  rule_id: 22c24520-11a8-424d-8d48-ccfda9fef2f5
+  rule_type: SINGLE_EVENT
+  version_create_time: '2023-12-26T18:35:41.705487Z'
+  version_id: 22c24520-11a8-424d-8d48-ccfda9fef2f5@v_1703615741_705487000

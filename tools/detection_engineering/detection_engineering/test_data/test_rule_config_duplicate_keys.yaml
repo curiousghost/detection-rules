@@ -1,0 +1,18 @@
+rule_1:
+  alertingEnabled: true
+  archived: false
+  archivedTime: null
+  liveRuleEnabled: true
+  ruleId: ru_06e0ae39-f89d-4173-8b1e-21fb3fa8fd13
+  ruleType: MULTI_EVENT
+  versionCreateTime: '2023-12-05T18:52:21.667567Z'
+  versionId: ru_06e0ae39-f89d-4173-8b1e-21fb3fa8fd13@v_1701802341_667567000
+rule_1:
+  alertingEnabled: false
+  archived: false
+  archivedTime: null
+  liveRuleEnabled: false
+  ruleId: ru_e960310d-6f6f-4bcd-9e7e-e68a0e2ba3bf
+  ruleType: MULTI_EVENT
+  versionCreateTime: '2023-11-17T22:41:01.293167Z'
+  versionId: ru_e960310d-6f6f-4bcd-9e7e-e68a0e2ba3bf@v_1700260861_293167000

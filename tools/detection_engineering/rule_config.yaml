@@ -43,10 +43,3 @@ test_aws_guardduty_suspicious_exec:
   rule_type: SINGLE_EVENT
   version_create_time: '2024-01-16T10:02:19.086319Z'
   version_id: ru_04c0a045-750c-4a8c-b2bc-d3b5dffe88d9@v_1705399339_086319000
-test_rb_cicd_rule:
-  alerting_enabled: false
-  archived: false
-  archived_time: null
-  live_rule_enabled: false
-  rule_id: 
-  rule_type: SINGLE_EVENT

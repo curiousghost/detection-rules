@@ -38,7 +38,9 @@ jobs:
           rm -rf /home/ubuntu/cloned
           git clone -b test_592626943 "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
           cd /home/ubuntu/cloned/tools/detection_engineering
-          echo "$API_KEY" >> .env
+          touch .env
+          echo "$API_KEY"
+          echo "$API_KEY" > .env
           cat .env
           # Pull the latest version of all rules from Chronicle
           echo "Attempting to pull the latest version of all rules from Chronicle"

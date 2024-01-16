@@ -1,0 +1,38 @@
+name: linux_runner_1
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "test_592626943" ]
+  pull_request:
+    branches: [ "test_592626943" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs: 
+  setup_chronicle_environment:   
+    runs-on: self-hosted  
+    
+    steps:  
+      - uses: actions/checkout@v3
+      - name: Setting up the environment 
+        env: 
+          API_KEY: ${{ secrets.CHRONICLE_DETECTION_API_KEY}}
+        run: |
+          cd detection_engineering/
+          echo CHRONICLE_API_CREDENTIALS=$API_KEY >> .env
+          #cat .env
+          echo "Setting up Python environment."
+          pip install --upgrade pip
+          pip install virtualenv
+          python -m virtualenv venv
+          source venv/bin/activate
+          which python  # Check that the virtual environment is activated.
+          python --version ; pip --version
+          #Install project requirements.
+          pip install -r requirements.txt
+          # Setting up git environment.
+          git --version
+          python -m detection_engineering --pull-latest-rules

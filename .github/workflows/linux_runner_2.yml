@@ -53,6 +53,24 @@ jobs:
           #echo "There are $CHANGES changes to commit" && [ "$CHANGES" -gt "0" ] && git commit -m "latest rules pulled from chronicle api" && git push origin "${CI_DEFAULT_BRANCH}" -o ci.skip
           echo "Attempting to update rules in Chronicle based on local rule files."
           python -m detection_engineering --update-remote-rules
+          # After any changes are made to rules in Chronicle, the latest rules are retrieved to update the main branch with the latest rule data (versionId, VersionCreateTime, etc).
+
+          # Add files to git staging area
+          git add rules rule_config.yaml
+      
+          # Check if there are any rule updates that need to be committed to the repo's main branch.
+          echo "Checking for updates to rules."
+          git status
+      
+          # Get a count of changes.
+          CHANGES=$(git status --porcelain | wc -l)
+      
+          # Commit and push changes if there are any. Skip the CI pipeline (ci.skip).
+          echo "There are $CHANGES changes to commit" && [ "$CHANGES" -gt "0" ] && git commit -m "latest rules pulled from chronicle api" && git push origin "${CI_DEFAULT_BRANCH}" -o ci.skip
+      
+          echo "Current time is $(date)"
+          # Show last commit message.
+          git log -1
 
 
 

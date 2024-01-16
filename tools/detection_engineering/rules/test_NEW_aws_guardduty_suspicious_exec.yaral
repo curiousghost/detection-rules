@@ -1,5 +1,5 @@
 /*
-TEST_1_create from runner
+TEST_2_update_from_cicd
  */
 
 rule test_NEW_aws_guardduty_suspicious_exec {

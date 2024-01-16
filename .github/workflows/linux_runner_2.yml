@@ -41,15 +41,15 @@ jobs:
           touch .env
           echo "$API_KEY" > .env
           # Pull the latest version of all rules from Chronicle
-          echo "Attempting to pull the latest version of all rules from Chronicle"
-          python -m detection_engineering --pull-latest-rules
+          #echo "Attempting to pull the latest version of all rules from Chronicle"
+          #python -m detection_engineering --pull-latest-rules
           #Add files to staging
-          git add rules rule_config.yaml
-          echo "Checking for updates to rules."
-          git status
+          #git add rules rule_config.yaml
+          #echo "Checking for updates to rules."
+          #git status
           #Get a count of changes.
-          CHANGES=$(git status --porcelain | wc -l)
-          echo "$CHANGES"
+          #CHANGES=$(git status --porcelain | wc -l)
+          #echo "$CHANGES"
           #echo "There are $CHANGES changes to commit" && [ "$CHANGES" -gt "0" ] && git commit -m "latest rules pulled from chronicle api" && git push origin "${CI_DEFAULT_BRANCH}" -o ci.skip
           echo "Attempting to update rules in Chronicle based on local rule files."
           python -m detection_engineering --update-remote-rules

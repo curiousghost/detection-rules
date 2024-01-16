@@ -35,7 +35,7 @@ jobs:
           # Setting up git environment.
           git --version
           cd ~
-          git clone "git@github.com:curiousghost/detection-rules.git" "/home/ubuntu/cloned"
+          git clone "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
           cd /home/ubuntu/cloned/
               # Pull the latest version of all rules from Chronicle
           echo "Attempting to pull the latest version of all rules from Chronicle"

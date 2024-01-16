@@ -32,8 +32,8 @@ test_NEW_aws_guardduty_suspicious_exec:
   live_rule_enabled: false
   rule_id: ru_047dfa6a-2c86-4ad2-b2e9-8dc6a2294975
   rule_type: SINGLE_EVENT
-  version_create_time: '2024-01-16T07:30:55.128095Z'
-  version_id: ru_047dfa6a-2c86-4ad2-b2e9-8dc6a2294975@v_1705390255_128095000
+  version_create_time: '2024-01-16T14:25:23.078783Z'
+  version_id: ru_047dfa6a-2c86-4ad2-b2e9-8dc6a2294975@v_1705415123_078783000
 test_aws_guardduty_suspicious_exec:
   alerting_enabled: false
   archived: false

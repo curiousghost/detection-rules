@@ -1,10 +1,45 @@
-# Example rule config entry
-okta_new_api_token_created:
+CryptoMiningDetected:
   alerting_enabled: false
   archived: false
   archived_time: null
-  live_rule_enabled: true
-  rule_id: 22c24520-11a8-424d-8d48-ccfda9fef2f5
+  live_rule_enabled: false
+  rule_id: ru_ec22c50a-a6ae-4757-9be3-64a70e057b22
   rule_type: SINGLE_EVENT
-  version_create_time: '2023-12-26T18:35:41.705487Z'
-  version_id: 22c24520-11a8-424d-8d48-ccfda9fef2f5@v_1703615741_705487000
+  version_create_time: '2024-01-15T14:50:35.540943Z'
+  version_id: ru_ec22c50a-a6ae-4757-9be3-64a70e057b22@v_1705330235_540943000
+StorageSetonPublic:
+  alerting_enabled: false
+  archived: false
+  archived_time: null
+  live_rule_enabled: false
+  rule_id: ru_8b6ec058-2db9-438c-8b1b-d6c55b044014
+  rule_type: SINGLE_EVENT
+  version_create_time: '2024-01-15T12:33:33.571583Z'
+  version_id: ru_8b6ec058-2db9-438c-8b1b-d6c55b044014@v_1705322013_571583000
+rule_1696868120694:
+  alerting_enabled: false
+  archived: true
+  archived_time: '2023-10-09T16:16:00.558759Z'
+  live_rule_enabled: false
+  rule_id: ru_7f1bb14e-ca9c-45ff-b891-1a8f5ed7e1c4
+  rule_type: SINGLE_EVENT
+  version_create_time: '2023-10-09T16:15:29.920991Z'
+  version_id: ru_7f1bb14e-ca9c-45ff-b891-1a8f5ed7e1c4@v_1696868129_920991000
+test_NEW_aws_guardduty_suspicious_exec:
+  alerting_enabled: false
+  archived: false
+  archived_time: null
+  live_rule_enabled: false
+  rule_id: ru_047dfa6a-2c86-4ad2-b2e9-8dc6a2294975
+  rule_type: SINGLE_EVENT
+  version_create_time: '2024-01-16T07:30:55.128095Z'
+  version_id: ru_047dfa6a-2c86-4ad2-b2e9-8dc6a2294975@v_1705390255_128095000
+test_aws_guardduty_suspicious_exec:
+  alerting_enabled: false
+  archived: false
+  archived_time: null
+  live_rule_enabled: false
+  rule_id: ru_04c0a045-750c-4a8c-b2bc-d3b5dffe88d9
+  rule_type: SINGLE_EVENT
+  version_create_time: '2024-01-16T10:02:19.086319Z'
+  version_id: ru_04c0a045-750c-4a8c-b2bc-d3b5dffe88d9@v_1705399339_086319000

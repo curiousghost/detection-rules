@@ -20,7 +20,7 @@ jobs:
         #   API_KEY: ${{ secrets.CHRONICLE_DETECTION_API_KEY}}
         run: |
           echo "Current working directory: $(pwd)"
-          cd detection-rules/tools/detection_engineering/
+          cd /home/ubuntu/detection-rules/tools/detection_engineering
           #echo CHRONICLE_API_CREDENTIALS=$API_KEY >> .env
           cat .env
           echo "Setting up Python environment."

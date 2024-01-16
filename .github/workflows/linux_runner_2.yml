@@ -35,6 +35,7 @@ jobs:
           # Setting up git environment.
           git --version
           cd ~
+          rm -rf /home/ubuntu/cloned
           git clone -b test_592626943 "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
           cd /home/ubuntu/cloned/detection-rules/tools/detection_engineering
           # Pull the latest version of all rules from Chronicle

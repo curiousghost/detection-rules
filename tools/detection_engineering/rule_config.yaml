@@ -48,5 +48,7 @@ test_cicd_create:
   archived: false
   archived_time: null
   live_rule_enabled: false
-  rule_id: 
+  rule_id: ru_1d29073c-40eb-4580-bb63-3e207e553bf9
   rule_type: SINGLE_EVENT
+  version_create_time: '2024-01-16T14:29:52.543855Z'
+  version_id: ru_1d29073c-40eb-4580-bb63-3e207e553bf9@v_1705415392_543855000

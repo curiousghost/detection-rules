@@ -20,8 +20,7 @@ jobs:
           API_KEY: ${{ secrets.API_KEY}}
         run: |
           echo "Current working directory: $(pwd)"
-          #cd /home/ubuntu/detection-rules/tools/detection_engineering
-          cd ~
+          cd /home/ubuntu/detection-rules/tools/detection_engineering
           echo "Setting up Python environment."
           pip install --upgrade pip
           pip install virtualenv

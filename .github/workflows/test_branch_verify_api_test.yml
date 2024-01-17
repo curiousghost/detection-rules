@@ -36,9 +36,6 @@ jobs:
           git clone -b test_592626943 "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
           cd /home/ubuntu/cloned/tools/detection_engineering
           python -m detection_engineering --verify-rules
-
-
-
       - name: Add comment to PR
         uses: actions/github-script@v6
         if: always()

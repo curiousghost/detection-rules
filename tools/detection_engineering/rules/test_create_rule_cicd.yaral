@@ -1,5 +1,5 @@
 /*
-TEST_Create_from_repo
+TEST_Create_from_repo_2
  */
 
 rule test_create_rule_cicd {

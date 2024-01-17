@@ -37,7 +37,7 @@ test_NEW_aws_guardduty_suspicious_exec:
 test_aws_guardduty_suspicious_exec:
   alerting_enabled: false
   archived: true
-  archived_time: null
+  archived_time: '2024-01-17T04:29:10.644636Z'
   live_rule_enabled: false
   rule_id: ru_04c0a045-750c-4a8c-b2bc-d3b5dffe88d9
   rule_type: SINGLE_EVENT
@@ -46,7 +46,7 @@ test_aws_guardduty_suspicious_exec:
 test_cicd_create:
   alerting_enabled: false
   archived: true
-  archived_time: null
+  archived_time: '2024-01-17T04:29:38.996234Z'
   live_rule_enabled: false
   rule_id: ru_1d29073c-40eb-4580-bb63-3e207e553bf9
   rule_type: SINGLE_EVENT

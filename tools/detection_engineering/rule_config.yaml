@@ -36,7 +36,7 @@ test_NEW_aws_guardduty_suspicious_exec:
   version_id: ru_047dfa6a-2c86-4ad2-b2e9-8dc6a2294975@v_1705415123_078783000
 test_aws_guardduty_suspicious_exec:
   alerting_enabled: false
-  archived: false
+  archived: true
   archived_time: null
   live_rule_enabled: false
   rule_id: ru_04c0a045-750c-4a8c-b2bc-d3b5dffe88d9
@@ -45,7 +45,7 @@ test_aws_guardduty_suspicious_exec:
   version_id: ru_04c0a045-750c-4a8c-b2bc-d3b5dffe88d9@v_1705399339_086319000
 test_cicd_create:
   alerting_enabled: false
-  archived: false
+  archived: true
   archived_time: null
   live_rule_enabled: false
   rule_id: ru_1d29073c-40eb-4580-bb63-3e207e553bf9

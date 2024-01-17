@@ -1,12 +1,12 @@
 /*
-TEST_2_update_from_cicd
+TEST_Create_from_repo
  */
 
-rule test_cicd_create {
+rule test_create_rule_cicd {
 
   meta:
     author = "Rahul"
-    description = "NEW Test rule - from repo"
+    description = "NEW Test rule - from push to main"
     type = "Alert"
     data_source = "AWS GuardDuty"
     severity = "High"

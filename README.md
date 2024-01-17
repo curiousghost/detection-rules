@@ -1,3 +1,5 @@
+[![test_branch_linux_runner_2](https://github.com/curiousghost/detection-rules/actions/workflows/linux_runner_testbranch.yml/badge.svg?branch=test_592626943&event=push)](https://github.com/curiousghost/detection-rules/actions/workflows/linux_runner_testbranch.yml)
+
 # Chronicle Detection Rules
 
 This repository contains sample detection rules and dashboards for use within

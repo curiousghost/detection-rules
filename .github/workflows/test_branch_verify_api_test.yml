@@ -33,7 +33,8 @@ jobs:
           git --version
           cd ~
           rm -rf /home/ubuntu/cloned
-          git clone -b test_592626943 "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
+          echo "head branch: $GITHUB_HEAD_REF"
+          git clone -b $GITHUB_HEAD_REF "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
           cd /home/ubuntu/cloned/tools/detection_engineering
           echo "$API_KEY" > .env
           python -m detection_engineering --verify-rules

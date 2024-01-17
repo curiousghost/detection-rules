@@ -1,4 +1,4 @@
-[![test_branch_linux_runner_2](https://github.com/curiousghost/detection-rules/actions/workflows/linux_runner_testbranch.yml/badge.svg?branch=test_592626943&event=push)](https://github.com/curiousghost/detection-rules/actions/workflows/linux_runner_testbranch.yml)
+[![test_branch_linux_runner_2](https://github.com/curiousghost/detection-rules/actions/workflows/linux_runner_testbranch.yml/badge.svg?branch=test_592626943&event=push)](https://github.com/curiousghost/detection-rules/actions/workflows/linux_runner_testbranch.yml) [![test_branch_verify_api_test.yml](https://github.com/curiousghost/detection-rules/actions/workflows/test_branch_verify_api_test.yml/badge.svg?event=pull_request)](https://github.com/curiousghost/detection-rules/actions/workflows/test_branch_verify_api_test.yml)
 
 # Chronicle Detection Rules
 

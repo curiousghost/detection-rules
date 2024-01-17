@@ -1,13 +1,13 @@
 name: test_branch_verify_api_test.yml
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
   # Triggers the workflow on pull requests but only for the "test" branch
   pull_request:
     types: [opened, reopened]
     branches: [ "test_592626943" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+    
 jobs: 
   setup_chronicle_environment_update_rules:   
     runs-on: self-hosted  

@@ -43,18 +43,15 @@ jobs:
           # output="${output//$'\r'/'%0D'}" 
           # echo "verify_result=$output" >> $GITHUB_ENV
           # echo "verify_result is set to: $output"
-          echo "verify_result=TESTING VERIFY RESULT" >> $GITHUB_ENV
-          echo "verify_result is set to: ${{ env.verify_result }}"
       - name: Add comment to PR
         uses: actions/github-script@v6
         if: always()
         with:
           script: |
             const name = '${{ github.workflow   }}';
-            const output = `Verification Results:\n ${{ env.verify_result }}`;
             const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
             const success = '${{ job.status }}' === 'success';
-            const body = `${name}: ${success ? 'succeeded ✅' : 'failed ❌'}\n${url}\n${output}`;
+            const body = `Rules Verification Failed. ${name}: ${success ? 'succeeded ✅' : 'failed ❌'}\n${url}`;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,

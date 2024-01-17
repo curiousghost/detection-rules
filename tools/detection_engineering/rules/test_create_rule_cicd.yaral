@@ -2,7 +2,7 @@
 TEST_Create_from_repo_2
  */
 
-bla blah rule test_create_rule_cicd {
+rule test_create_rule_cicd {
 
   meta:
     author = "Rahul"

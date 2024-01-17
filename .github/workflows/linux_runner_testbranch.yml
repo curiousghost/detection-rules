@@ -49,6 +49,7 @@ jobs:
       
       - name: Updating rules
         run: |
+          echo "Current working directory: $(pwd)"
           echo "Attempting to update rules in Chronicle based on local rule files."
           python -m detection_engineering --update-remote-rules
           # After any changes are made to rules in Chronicle, the latest rules are retrieved to update the main branch with the latest rule data (versionId, VersionCreateTime, etc).

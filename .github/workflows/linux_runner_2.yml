@@ -20,9 +20,8 @@ jobs:
           API_KEY: ${{ secrets.API_KEY}}
         run: |
           echo "Current working directory: $(pwd)"
-          cd /home/ubuntu/detection-rules/tools/detection_engineering
-          #echo CHRONICLE_API_CREDENTIALS=$API_KEY >> .env
-          #cat .env
+          #cd /home/ubuntu/detection-rules/tools/detection_engineering
+          cd ~
           echo "Setting up Python environment."
           pip install --upgrade pip
           pip install virtualenv
@@ -38,7 +37,6 @@ jobs:
           rm -rf /home/ubuntu/cloned
           git clone -b test_592626943 "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
           cd /home/ubuntu/cloned/tools/detection_engineering
-          touch .env
           echo "$API_KEY" > .env
           # Pull the latest version of all rules from Chronicle
           #echo "Attempting to pull the latest version of all rules from Chronicle"

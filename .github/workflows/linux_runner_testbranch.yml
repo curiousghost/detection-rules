@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs: 
-  setup_chronicle_environment:   
+  setup_chronicle_environment_update_rules:   
     runs-on: self-hosted  
     
     steps:  
@@ -49,6 +49,7 @@ jobs:
       
       - name: Updating rules
         run: |
+          cd /home/ubuntu/cloned/tools/detection_engineering
           echo "Current working directory: $(pwd)"
           echo "Attempting to update rules in Chronicle based on local rule files."
           python -m detection_engineering --update-remote-rules

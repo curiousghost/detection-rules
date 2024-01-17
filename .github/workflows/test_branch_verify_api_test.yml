@@ -9,7 +9,7 @@ on:
     branches: [ "test_592626943" ]
     
 jobs: 
-  setup_chronicle_environment_update_rules:   
+  verify_local_rules:   
     runs-on: self-hosted  
     
     steps:  

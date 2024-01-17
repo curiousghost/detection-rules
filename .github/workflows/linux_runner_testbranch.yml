@@ -1,0 +1,71 @@
+name: test_branch_linux_runner_2
+on:
+  # Triggers the workflow on push events but only for the "test" branch
+  push:
+    branches: [ "test_592626943" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs: 
+  setup_chronicle_environment:   
+    runs-on: self-hosted  
+    
+    steps:  
+      - uses: actions/checkout@v3
+      - name: Setting up the environment 
+        env: 
+          API_KEY: ${{ secrets.API_KEY}}
+        run: |
+          echo "Current working directory: $(pwd)"
+          cd /home/ubuntu/detection-rules/tools/detection_engineering
+          echo "Setting up Python environment."
+          pip install --upgrade pip
+          pip install virtualenv
+          python -m virtualenv venv
+          source venv/bin/activate
+          which python  # Check that the virtual environment is activated.
+          python --version ; pip --version
+          #Install project requirements.
+          pip install -r requirements.txt
+          # Setting up git environment.
+          git --version
+          cd ~
+          rm -rf /home/ubuntu/cloned
+          git clone -b test_592626943 "https://github.com/curiousghost/detection-rules.git" "/home/ubuntu/cloned"
+          cd /home/ubuntu/cloned/tools/detection_engineering
+          echo "$API_KEY" > .env
+          # Pull the latest version of all rules from Chronicle
+          #echo "Attempting to pull the latest version of all rules from Chronicle"
+          #python -m detection_engineering --pull-latest-rules
+          #Add files to staging
+          #git add rules rule_config.yaml
+          #echo "Checking for updates to rules."
+          #git status
+          #Get a count of changes.
+          #CHANGES=$(git status --porcelain | wc -l)
+          #echo "$CHANGES"
+          #echo "There are $CHANGES changes to commit" && [ "$CHANGES" -gt "0" ] && git commit -m "latest rules pulled from chronicle api" && git push origin "${CI_DEFAULT_BRANCH}" -o ci.skip
+      
+      - name: Updating rules
+        run: |
+          echo "Attempting to update rules in Chronicle based on local rule files."
+          python -m detection_engineering --update-remote-rules
+          # After any changes are made to rules in Chronicle, the latest rules are retrieved to update the main branch with the latest rule data (versionId, VersionCreateTime, etc).
+
+          # Add files to git staging area
+          git add rules rule_config.yaml
+      
+          # Check if there are any rule updates that need to be committed to the repo's main branch.
+          echo "Checking for updates to rules."
+          git status
+      
+          # Get a count of changes.
+          CHANGES=$(git status --porcelain | wc -l)
+      
+          # Commit and push changes if there are any. Skip the CI pipeline (ci.skip).
+          echo "There are $CHANGES changes to commit" && [ "$CHANGES" -gt "0" ] && git commit -m "latest rules pulled from chronicle api" && git push origin test_592626943 -o ci.skip
+      
+          echo "Current time is $(date)"
+          # Show last commit message.
+          git log -1
